@@ -1,260 +1,143 @@
 # MALDI Mass Spec Analyzer
 
-
-
 This tool is designed for the rapid identification of polymer repeat units and end-groups in MALDI-TOF mass spectra.
 
-It automates the calculation of mass differences  between detected peaks and compares them against a customizable reference database.
+It automates the calculation of mass differences between detected peaks and compares them against a customizable reference database.
 
+---
 
+### 1. Key Features
 
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+- **Interactive Spectrum View**  
+  Load .dat or .txt files and zoom into specific regions of interest.
 
-### 1\. Key Features
+- **Live Smoothing**  
+  Real-time noise reduction using a Savitzky‚ÄìGolay filter with adjustable window size.
 
+- **Automated Peak Detection**  
+  Variable intensity thresholding to identify relevant signals even in noisy data.
 
+- **Monomer Identification**  
+  Combinatorial delta-mass matching against an Excel database with adjustable tolerance.
 
-ï	Interactive Spectrum View
+- **End-Group Analysis**  
+  Automatic calculation of residual masses with support for common adducts.
 
-Load .dat or .txt files and zoom into specific regions of interest.
+- **Multi Series Annotation**  
+  Automatic calculation of residual masses with support for common adducts.
 
+- **Series Export**  
+  Single or multiple series can be exported to Excel for further handling.
 
+---
 
-ï	Live Smoothing
+### 2. User Workflow
 
-Real-time noise reduction using a Savitzky-Golay filter with an adjustable window size.
-
-
-
-ï	Automated Peak Detection
-
-Variable intensity thresholding to identify relevant signals even in noisy data.
-
-
-
-ï	Monomer Identification
-
-Combinatorial delta-mass matching against an Excel database with adjustable tolerance.
-
-
-
-ï	End-Group Analysis
-
-Automatic calculation of residual masses with support for common adducts,
-
-
-
-ï	Multi Series Annotation
-
-Automatic calculation of residual masses with support for common adducts,
-
-
-
-ï	Series Export
-
-Single or multiple series will be exported to Excel for further handling
-
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 2\. User Workflow
-
-
-
-###### **Load Spectrum**
+#### **Load Spectrum**
 
 Import your raw data file (two-column ASCII format: m/z and intensity).
 
+![Fig 1](Figures/Fig1.png)
 
-!(Figures/Fig 1.png)
+#### **Select m/z Region**
 
-
-
-###### **Select m/z Region**
-
-Use the **magnifying glass** in the left bottom toolbar to select a specific peak area.
-
+Use the **magnifying glass** in the bottom-left toolbar to select a specific peak area.  
 If necessary, use the **Smooth slider (%)** to reduce baseline noise.
 
+![Fig 2](Figures/Fig2.png)
 
+#### **Peak Detection Threshold**
 
-!(Figures/Fig 2.png)
+Adjust the **Peak Detection Threshold slider (%)** so that only significant peaks are marked with red crosses.
 
+Avoid picking the ‚Äúwrong‚Äù isotope peaks in high-resolution spectra. Always adjust the threshold to select only the most abundant isotope.
 
+![Fig 3](Figures/Fig3.png)
 
-###### **Peak Detection Threshold**
+#### **Adduct Ion**
 
+Select the adduct ion from the dropdown list.
 
+Then adjust the **Match tolerance (Da)** based on calibration quality or to differentiate between polymer structures with nearly identical repeat-unit masses.  
+A value of **0.5 Da** is sufficient for most monomers.
 
-Adjust the **Peak Detection Threshold slider (%)** to ensure that only significant peaks are marked with red crosses.
+![Fig 4](Figures/Fig4.png)
 
-Avoid picking the ëwrongí isotope peaks in a high-resolution spectrum. Always adjust the threshold to select only the most abundant isotope.
-
-
-
-!(Figures/Fig 3.png)
-
-
-
-###### **Adduct Ion**
-
-
-
-Select the adduct-ion from the dropdown list.
-
-Then, carefully adjust the **Match tolerance (Da)** based on the quality of your instrument's calibration or to differentiate between polymer structures with nearly identical repeat unit masses. A value of 0.5 Da is sufficient for most monomer units. Increase slightly when your expected monomer mass does not appear in the table after the next step.
-
-
-
-!(Figures/Fig 4.png)
-
-
-
-###### **Analyze Zoom**
-
-
+#### **Analyze Zoom**
 
 Click **Analyze Zoom** to populate the results table.
 
-In this example, two monomer units are proposed. This (mostly) happens when peaks from two different series (i.e. two different end groups) are selected.
+In this example, two monomer units are proposed ‚Äî this often happens when peaks from two different series (i.e., different end groups) are selected.
 
-Here, it is clearly a PEG. However, it might be more difficult to determine in other cases. This can easily be checked using the right-hand window, as shown in the next step.
+![Fig 5](Figures/Fig5.png)
 
+#### **Select Monomer from Table**
 
-
-!(Figures/Fig 5.png)
-
-
-
-###### **Select Monomer from Table**
-
-
-
-Click on a row in the table to view a detailed zoom-in of the right window, which includes the calculated residual (end-group) mass. The peak assignment in this window enables the unambiguous identification of the correct polymer structure, as shown in the following two examples.
+Click a row in the table to view a detailed zoom-in of the right window, including the calculated residual (end-group) mass.
 
 The selected monomer structure is highlighted by colored circles in the main spectrum.
 
-&#x20;
+Check whether the red triangles indicate the correct isotopes (high resolution) or the same peak positions (low resolution).  
+If not, the wrong monomer structure was selected.
 
-For better visibility, the width of the window can be adjusted by sliding the divider, at the expense of the other window.
+To reduce the number of selected peaks to ideally two:
 
+1. Select a narrower **zoom** region.  
+2. Increase the **peak threshold**.
 
+##### Case #1 ‚Äì correct structure
 
-Check whether the red triangles indicate the correct isotopes (at higher resolution) or the same peak positions (at lower resolution). If not, then the wrong monomer structure was selected. In this case, the number of peaks marked in the main spectrum should ideally be reduced to two. This can be achieved in two ways:
+![Fig 6](Figures/Fig6.png)
 
+##### Case #2 ‚Äì wrong structure
 
+![Fig 7](Figures/Fig7.png)
 
-1\. Select a narrower **zoom** region that ideally contains only two peaks of the series.
+Use the **Home** button to display the full m/z range and verify the correct structure.
 
-2\) Increasing the **peak threshold** so that only two peaks remain marked with red crosses.
+The program cannot distinguish isobaric masses such as:
 
+- acrylic acid vs. lactic acid ‚Üí both (C‚ÇÉH‚ÇÑO‚ÇÇ)‚Çô = 72.06 Da  
+- methyl methacrylate vs. valerolactone ‚Üí both (C‚ÇÖH‚ÇàO‚ÇÇ)‚Çô = 100.05 Da
 
+Prior knowledge is required.
 
-###### Case #1 ñ correct structure
+![Fig 8](Figures/Fig8.png)
 
+If too many or too few peaks are selected, increase **Series Sensitivity** and click **Analyze Zoom** again.  
+Press **DEL** to remove the previously selected series.
 
+![Fig 9](Figures/Fig9.png)
 
-!(Figures/Fig 6.png)
+If multiple peak series exist, repeat the workflow for each.  
+Each series is shown with a different color and can be exported individually or together.
 
+![Fig 10](Figures/Fig10.png)
 
+Minor series should be selected by zooming into only two peaks.  
+The right-hand spectrum confirms correct selection.
 
-###### Case #2 ñ wrong structure
+![Fig 11](Figures/Fig11.png)
 
+#### **References**
 
+Double-click **References** in the selected row.  
+These are example references, mostly the earliest publications for each polymer.
 
-!(Figures/Fig 7.png)
+#### **Reset**
 
+Deletes all operations and clears all windows.  
+The **status** of each operation is displayed at the top right.
 
-Use the **Home** button in the left bottom toolbar to display the whole m/z range and to check whether the correct structure has been selected.
+![Fig 12](Figures/Fig12.png)
 
-
-
-The program cannot distinguish isobaric masses, such as acrylic acid and lactic acid, which both have a sum formula of (C3H4O2)n = 72.06 Da, or methyl methacrylate and valerolactone, which both have a sum formula of (C5H8O2)n = 100.05 Da.
-
-Identifying them requires prior knowledge.
-
-The selected monomer structure is highlighted by colored circles in the main spectrum. Use the **Home** button in the bottom left toolbar to display the entire m/z range, which allows you to verify that the correct structure has been selected.
-
-
-
-!(Figures/Fig 8.png)
-
-
-
-If too many (or too few) peaks have been selected, especially on the less intense sides of the peak distribution, increase the **Series Sensitivity** slightly and click **Analyze Zoom** again. Before selecting the monomer from the table again, press \[DEL] on your keyboard to delete the previously selected series.
-
-
-
-!(Figures/Fig 9.png)
-
-
-
-If the mass spectrum shows multiple peak series with different end groups or monomer structures, use the **Home** button in the main spectrum and repeat all steps for each series.
-
-Each series is indicated by a differently colored circle and can be exported separately or together with other series using the **Export Series** button.
-
-
-
-!(Figures/Fig 10.png)
-
-
-
-Minor series should be selected by carefully zooming in on just two peaks of the series. The right hand spectrum confirms a correct selection.
-
-
-
-!(Figures/Fig 11.png)
-
-
-
-###### **References**
-
-###### &#x09;
-
-Double-click the **References** in the selected row. These references are just examples, mostly of the first publications to refer to these polymers. Many more references are available, especially for the most common polymers.
-
-
-
-
-
-###### **Reset**
-
-
-
-Deletes all operations and clears all windows.
-
-The **status** of each operation is displayed at the top right of the main window.
-
-!(Figures/Fig 12.png)
-
-
-
-
+---
 
 ### Reference Database (structures.xlsx)
 
+The program requires the Excel file **structures.xlsx**, delivered with the software.
 
+It contains common polymer structures and literature-reported structures (up to 2026).  
+Users may add new entries.
 
-The program requires the Excel file named structures.xlsx which will be delivered with the program.
-
-This file contains most common polymer structures along with specific polymer structures that were published in literature (by 2026) and can be customized by every user by adding new entries.
 
