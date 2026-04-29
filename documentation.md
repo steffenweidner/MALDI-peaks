@@ -85,8 +85,7 @@ Single or multiple series will be exported to Excel for further handling
 Import your raw data file (two-column ASCII format: m/z and intensity).
 
 
-
-Fig.1
+!(Figures/Fig 1.png)
 
 
 
@@ -98,7 +97,7 @@ If necessary, use the **Smooth slider (%)** to reduce baseline noise.
 
 
 
-Fig.2
+!(Figures/Fig 2.png)
 
 
 
@@ -112,7 +111,7 @@ Avoid picking the ‘wrong’ isotope peaks in a high-resolution spectrum. Always ad
 
 
 
-Fig. 3
+!(Figures/Fig 3.png)
 
 
 
@@ -126,7 +125,7 @@ Then, carefully adjust the **Match tolerance (Da)** based on the quality of your
 
 
 
-Fig. 4
+!(Figures/Fig 4.png)
 
 
 
@@ -142,7 +141,7 @@ Here, it is clearly a PEG. However, it might be more difficult to determine in o
 
 
 
-Fig. 5
+!(Figures/Fig 5.png)
 
 
 
@@ -174,7 +173,7 @@ Check whether the red triangles indicate the correct isotopes (at higher resolut
 
 
 
-Fig. 6
+!(Figures/Fig 6.png)
 
 
 
@@ -182,8 +181,7 @@ Fig. 6
 
 
 
-Fig. 7
-
+!(Figures/Fig 7.png)
 
 
 Use the **Home** button in the left bottom toolbar to display the whole m/z range and to check whether the correct structure has been selected.
@@ -198,7 +196,7 @@ The selected monomer structure is highlighted by colored circles in the main spe
 
 
 
-Fig. 8
+!(Figures/Fig 8.png)
 
 
 
@@ -206,7 +204,7 @@ If too many (or too few) peaks have been selected, especially on the less intens
 
 
 
-Fig.9
+!(Figures/Fig 9.png)
 
 
 
@@ -216,7 +214,7 @@ Each series is indicated by a differently colored circle and can be exported sep
 
 
 
-Fig. 10
+!(Figures/Fig 10.png)
 
 
 
@@ -224,7 +222,7 @@ Minor series should be selected by carefully zooming in on just two peaks of the
 
 
 
-Fig. 11
+!(Figures/Fig 11.png)
 
 
 
@@ -246,7 +244,7 @@ Deletes all operations and clears all windows.
 
 The **status** of each operation is displayed at the top right of the main window.
 
-
+!(Figures/Fig 12.png)
 
 
 
